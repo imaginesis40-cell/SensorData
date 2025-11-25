@@ -67,6 +67,18 @@
   </tr>
  </table>
 <br><br><br>
+
+
+# 회로도
+<table>
+  <tr>
+    <td width="90%" align="center">
+      <img src="arduino/Circuit/EasyEda.png" width="100%" alt="Sensor_value_by_distance"/>
+      <br>
+      <sub>회로도<br>
+  </tr>
+ </table>
+
         
 # 11.24 -> 11.25 개선점 <br>
 
