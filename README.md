@@ -34,15 +34,15 @@
 <table>
   <tr>
     <td width="50%" align="center">
-      <img src="analysis/센서_산점도/10cm_dot_graph.png" width="100%" alt="10cm 산점도"/>
+      <img src="analysis/images/10cm.png" width="100%" alt="10cm 산점도"/>
       <br>
       <sub>그림 1. 10cm 거리에서 측정한 센서 데이터의 산점도<br>
-      아날로그 값 range 74</td>
+      아날로그 값 range 51</td>
     <td width="50%" align="center">
-      <img src="analysis/센서_산점도/5cm_dot_graph.png" width="100%" alt="5cm 산점도"/>
+      <img src="analysis/images/5cm.png" width="100%" alt="5cm 산점도"/>
       <br>
       <sub>그림 2. 5cm 거리에서 측정한 센서 데이터의 산점도<br>
-      아날로그 값 range 240</td>
+      아날로그 값 range 109</td>
   </tr>
 </table>
 <br><br><br>
@@ -50,7 +50,7 @@
 <table>
   <tr>
     <td width="90%" align="center">
-      <img src="analysis/센서_산점도/flame_sensor_error_by_distance.png" width="100%" alt="flame_sensor_error_by_distance"/>
+      <img src="analysis/images/Eflame.png" width="100%" alt="flame_sensor_error_by_distance"/>
       <br>
       <sub>그림 3. 거리에 따른 센서 값 변동 비교</td>
   </tr>
@@ -60,7 +60,7 @@
 <table>
   <tr>
     <td width="90%" align="center">
-      <img src="analysis/센서_산점도/Sensor_value_by_distance.png" width="100%" alt="Sensor_value_by_distance"/>
+      <img src="analysis/images/sd.png" width="100%" alt="Sensor_value_by_distance"/>
       <br>
       <sub>그림 3-1. 그림3 그래프 확대<br>
       광원이 가까울수록 아날로그 값의 분산이 커진다</td>
@@ -80,15 +80,12 @@
  </table>
 <br><br>
         
-# 11.24 -> 11.25 개선점 <br>
+# 11.25 -> 11.25 개선점 <br>
 
-### 1. 센서 개수 증가 
-       1-a. 화재감지센서 -> 3개
-       1-b. 초음파센서   -> 3개      
+### 1. 회로 개선
+       1-a. 화재 감지 센서의 저항 100Ω -> 1000Ω 으로 변경
+       1-b. 저항이 변경됨에 따라 코드와 회로도 수정   
+ 
        
-### 2. loop 제거 후 분기문 추가 (millis() - prevmillis() 사용)
-       2-a. 화재 감지 빈도 5초당 1번 -> 0.0n초당 1번으로 증가  
-
-### 3. 출력 장치 주가
-       3-a. LCD디스플레이로 매핑한 % 출력
-       3-b. 쓰레기통 깊이와 무관한 디스플레이 출력 (백분율 단위)
+### 2. 데이터 재수집
+       1-a. 새로운 데이터를 반영해 시각자료 변경
