@@ -88,7 +88,7 @@
     <td width="33%" align="center">
       <img src="arduino/final_images/from_front.jpg" width="100%" alt=""/>
       <br>
-      <sub>그림 1. LCD디스플레이 및 주 회로<br>
+      <sub>그림 1. LCD디스플레이 및 회로<br>
       (전면)</td>
     <td width="33%" align="center">
       <img src="arduino/final_images/from_side.jpg" width="100%" alt="5cm 산점도"/>
