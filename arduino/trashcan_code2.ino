@@ -64,7 +64,7 @@ int trigSs[numOfSensor2] = {0}; int echoSs[numOfSensor2] = {0};
 // 초음파 센서 핀 배열 선언
 int fireSs[numOfSensor1] = {0}; 
 // 화재감지 핀 배열 선언
-const int piezo = 9; 
+const int piezo = 8; 
 // 피에조 출력 핀 배열 선언
 LiquidCrystal_I2C lcd(0x27, 16, 2); 
 // LCD class 선언
