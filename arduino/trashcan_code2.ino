@@ -126,7 +126,7 @@ void loop()
 {
   int maxFlame = senseMaxFlame();     // 화재감지 센서의 최댓값을 입력받아
 
-      if(maxFlame > EMERGENCYVALUE)   // 183 보다 크면 EMERGENCY            
+      if(maxFlame > EMERGENCYVALUE)   // 42 보다 크면 EMERGENCY            
         {                             // 코드 109 ~ 114는 매우 빠른 속도로 loop에 따라 실행됨
         EMERGENCY();  
         }                                          
