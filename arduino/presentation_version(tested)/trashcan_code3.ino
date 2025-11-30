@@ -50,17 +50,17 @@ int siren[9] = {C, D, E, F, G, F, E, D, C};
 |   함수 선언  |
 **************/
 
-// LCD디스플레이가 출력하는 %의 집합 (ex> 63.3 -> 65으로 매핑)
+// LCD디스플레이가 출력하는 %의 집합 (ex> 63.3 -> 65으로 대응)
 int maxDepthCase[8] = {65, 70, 75, 80, 85, 90, 95, 100};
 
 // 화재감지 센서 3개의 반환값을 입력받아 최댓값 반환
 int senseMaxFlame(void);  
 
-
-// 빈 쓰레기통의 초기 깊이를 측정해 백분율 변환의 분모 값을 반환하는 함수
+// 빈 쓰레기통의 초기 깊이를 측정해 백분율 표현식의 분모 값을 반환하는 함수
 float setDepthValue(void);
 
-// 초음파 센서 3개를 각각 3번 합해 개별 평균을 낸 후, 가장 큰 2개의 센서 평균의 평균 반환
+
+// 초음파 센서 3개를 각각 3번 합해 개별 평균을 계산한 후, 가장 큰 2개의 센서 평균의 평균 반환
 // 즉, 이 함수는 가장 깊은 구간을 측정하는 센서 2개에 대한 함수이다.
 // 이러한 측정 방식을 통해, 비닐 몇개가 볼록 튀어나와서 데이터를 오염시키는 경우를 방지할 수 있음
 float getDepthValue(void);
@@ -83,7 +83,7 @@ float setDepth = 0;
 float depthValue = 0; 
 // 쓰레기통이 얼마나 찼는지에 대한 백분율 (가득차면 100)
 int mapedValue = 0;    
-// 매핑한 값 (코드 34의 maxDepthCase[9] 중 하나)
+// 대응한 값 (코드 34의 maxDepthCase[9] 중 하나)
 
 
 unsigned long pastmillis = 0;  
@@ -140,23 +140,24 @@ void loop()
         EMERGENCY();  
         }                                          
 
-  if(millis() - pastmillis >= 2000)   // 코드 116의 실행으로부터 2초가 지나면
-    {                                 // 쓰레기량을 측정한 후 LCD 출력 여부를 판단
+  if(millis() - pastmillis >= 2000)   // millis() - pastmillis >= 2000 를 통해 동일 코드가 실행된지 2초가 지나면 재실행함
+    {                                 // >> 2초마다 쓰레기 측정 후 출력 반복실행
     depthValue = ((setDepth - getDepthValue())/setDepth)*100;  
     if(depthValue < 0) {depthValue = 0;}  
 
-    mapedValue = mapPrintPercent(depthValue);
-                                      // 코드 122> float백분율을 공차 5짜리 int에 매핑
+    mapedValue = mapPrintPercent(depthValue);  //>> float백분율을 공차 5짜리 int에 대응
+
+
       if(mapedValue != 0)                 
         {                
           lcd.home();    
-          lcd.print(mapedValue);      // 매핑한 int값 LCD로 출력      
+          lcd.print(mapedValue);      // 대응한 int값 LCD로 출력      
           lcd.print("% FULL"); 
           lcd.backlight();            
         }
         else
           {
-           lcd.clear();               // 매핑한 int값이 60 이하면 백라이트 OFF
+           lcd.clear();               // 대응한 int값이 60 이하면 백라이트 OFF
            lcd.noBacklight();         // 경제성 고려한 설계
           }                                        
      pastmillis = millis();
@@ -279,7 +280,7 @@ void EMERGENCY ()
     }
 }
 
-/*  <<LCD 디스플레이 출력값 매핑>>  */
+/*  <<LCD 디스플레이 출력값 대응>>  */
 int mapPrintPercent(float percentDepth)
 {
   int percentToPrint = 0;
