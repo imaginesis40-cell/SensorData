@@ -150,13 +150,14 @@ void loop()
 
       if(mapedValue != 0)                 
         {                
-          lcd.home();    
+          lcd.setCursor(3,0);  
           lcd.print(mapedValue);      // 대응한 int값 LCD로 출력      
           lcd.print("% FULL"); 
           lcd.backlight();            
         }
         else
           {
+            lcd.home();
            lcd.clear();               // 대응한 int값이 60 이하면 백라이트 OFF
            lcd.noBacklight();         // 경제성 고려한 설계
           }                                        
