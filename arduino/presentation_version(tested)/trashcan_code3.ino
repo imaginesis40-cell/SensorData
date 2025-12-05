@@ -133,16 +133,14 @@ for(int i = 0; i < numOfSensor2; i++)
 
 void loop() 
 {
-  int maxFlame = senseMaxFlame();     // 화재감지 센서의 최댓값을 입력받아
-
-      if(maxFlame > EMERGENCYVALUE)   // 42 보다 크면 EMERGENCY            
+      if(senseMaxFlame() > EMERGENCYVALUE)   // 42 보다 크면 EMERGENCY            
         {                             // 코드 109 ~ 114는 매우 빠른 속도로 loop에 따라 실행됨
         EMERGENCY();  
         }                                          
 
   if(millis() - pastmillis >= 2000)   // millis() - pastmillis >= 2000 를 통해 동일 코드가 실행된지 2초가 지나면 재실행함
     {                                 // >> 2초마다 쓰레기 측정 후 출력 반복실행
-    depthValue = ((setDepth - getDepthValue())/setDepth)*100;  
+    depthValue = ((setDepth - getDepthValue())/setDepth)*100.0;  
     if(depthValue < 0) {depthValue = 0;}  
 
     mapedValue = mapPrintPercent(depthValue);  //>> float백분율을 공차 5짜리 int에 대응
@@ -157,7 +155,7 @@ void loop()
         }
         else
           {
-            lcd.home();
+           lcd.home();
            lcd.clear();               // 대응한 int값이 60 이하면 백라이트 OFF
            lcd.noBacklight();         // 경제성 고려한 설계
           }                                        
